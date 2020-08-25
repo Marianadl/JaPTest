@@ -1,8 +1,8 @@
 // Formato de const, var y functions tomado de categories.js y adaptado para los productos.
 const ORDER_ASC_BY_NAME = "AZ";
 const ORDER_DESC_BY_NAME = "ZA";
-const ORDER_ASC_BY_PROD_COST = "Precio";
-const ORDER_DESC_BY_PROD_COST = "Precio";
+const ORDER_ASC_BY_PROD_COST = "Precio Asc";
+const ORDER_DESC_BY_PROD_COST = "Precio Desc";
 
 var productsArray = [];
 var currentSortCriteria = undefined;
