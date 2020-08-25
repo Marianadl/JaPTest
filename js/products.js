@@ -14,7 +14,7 @@ function sortProducts(criteria, array){
         result = array.sort(function(a, b) {
             let aCost = parseInt(a.cost);
             let bCost = parseInt(b.cost);
-            console.log("AHH DESC");
+            console.log("Ordenando por precio descendentemente");
             if ( aCost > bCost ){ return -1; }
             if ( aCost < bCost ){ return 1; }
             
@@ -24,13 +24,14 @@ function sortProducts(criteria, array){
         result = array.sort(function(a, b) {    // en categories.js ordena de mayor a menor cantidad de articulos
             let aCost = parseInt(a.cost);       // adaptada para que ordene de menor a mayor costo del producto
             let bCost = parseInt(b.cost);
-            console.log("AHH ASC");
+            console.log("Ordenando por precio ascendentemente");
             if ( aCost > bCost ){ return 1; } // en categories.js es -1
             if ( aCost < bCost ){ return -1; } // en categories.js es 1
             return 0;
         });
         }else if (criteria === ORDER_DESC_BY_SOLD_COUNT){
             result = array.sort(function(a, b) {
+                console.log("Ordenando por cantidad de articulos vendidos");
                 if ( a.soldCount > b.soldCount ){ return -1; }
                 if ( a.soldCount < b.soldCount ){ return 1; }
                 return 0;
