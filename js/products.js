@@ -3,6 +3,7 @@ const ORDER_ASC_BY_NAME = "AZ";
 const ORDER_DESC_BY_NAME = "ZA";
 const ORDER_ASC_BY_PROD_COST = "Precio Asc";
 const ORDER_DESC_BY_PROD_COST = "Precio Desc";
+const ORDER_DESC_BY_SOLD_COUNT = "Vendidos";
 
 var productsArray = [];
 var currentSortCriteria = undefined;
@@ -44,8 +45,13 @@ function sortProducts(criteria, array){
                 
                 return 0;
             });
-    }
-
+        }else if (criteria === ORDER_DESC_BY_SOLD_COUNT){
+            result = array.sort(function(a, b) {
+                if ( a.soldCount > b.soldCount ){ return -1; }
+                if ( a.soldCount < b.soldCount ){ return 1; }
+                return 0;
+            });
+        }
     return result;
 }
 
@@ -119,6 +125,10 @@ document.addEventListener('DOMContentLoaded', function (e) {
     
     document.getElementById("sortByCostDesc").addEventListener("click", function(){
         sortAndShowProducts(ORDER_DESC_BY_PROD_COST);
+    });
+
+    document.getElementById("sortBySoldCount").addEventListener("click", function(){
+        sortAndShowProducts(ORDER_DESC_BY_SOLD_COUNT);
     });
 
     
