@@ -2,6 +2,7 @@
 const ORDER_ASC_BY_NAME = "AZ";
 const ORDER_DESC_BY_NAME = "ZA";
 const ORDER_BY_PROD_COST = "Precio";
+
 var productsArray = [];
 var currentSortCriteria = undefined;
 var minCost = undefined;
@@ -26,11 +27,22 @@ function sortProducts(criteria, array){
         result = array.sort(function(a, b) {    // en categories.js ordena de mayor a menor cantidad de articulos
             let aCost = parseInt(a.cost);       // adaptada para que ordene de menor a mayor costo del producto
             let bCost = parseInt(b.cost);
-
+            console.log("AHH ASC");
             if ( aCost > bCost ){ return 1; } // en categories.js es -1
             if ( aCost < bCost ){ return -1; } // en categories.js es 1
             return 0;
         });
+
+        }else if (criteria === ORDER_BY_PROD_COST){
+            result = array.sort(function(a, b) {
+                let aCost = parseInt(a.cost);
+                let bCost = parseInt(b.cost);
+                console.log("AHH DESC");
+                if ( aCost > bCost ){ return -1; }
+                if ( aCost < bCost ){ return 1; }
+                
+                return 0;
+            });
     }
 
     return result;
@@ -103,7 +115,12 @@ document.addEventListener('DOMContentLoaded', function (e) {
     document.getElementById("sortByCost").addEventListener("click", function(){
         sortAndShowProducts(ORDER_BY_PROD_COST);
     });
+    
+    document.getElementById("sortByCostDesc").addEventListener("click", function(){
+        sortAndShowProducts(ORDER_BY_PROD_COST);
+    });
 
+    
     document.getElementById("clearRangeFilter").addEventListener("click", function(){
         document.getElementById("rangeFilterCostMin").value = "";
         document.getElementById("rangeFilterCostMax").value = "";
@@ -137,3 +154,4 @@ document.addEventListener('DOMContentLoaded', function (e) {
         showProductsList();
     });
 });
+
