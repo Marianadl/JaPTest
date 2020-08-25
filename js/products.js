@@ -107,7 +107,7 @@ function showProductsList() {
 document.addEventListener('DOMContentLoaded', function (e) {
     getJSONData(PRODUCTS_URL).then(function(resultObj){
         if (resultObj.status === "ok"){
-            sortAndShowProducts(ORDER_ASC_BY_NAME, resultObj.data);
+            sortAndShowProducts(ORDER_DESC_BY_PROD_COST, resultObj.data);
         }
     });
 
@@ -122,13 +122,11 @@ document.addEventListener('DOMContentLoaded', function (e) {
     document.getElementById("sortByCostDesc").addEventListener("click", function(){
         sortAndShowProducts(ORDER_DESC_BY_PROD_COST);
     });
-    
+
     document.getElementById("sortByCost").addEventListener("click", function(){
         sortAndShowProducts(ORDER_ASC_BY_PROD_COST);
     });
     
-    
-
     document.getElementById("sortBySoldCount").addEventListener("click", function(){
         sortAndShowProducts(ORDER_DESC_BY_SOLD_COUNT);
     });
