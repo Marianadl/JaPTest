@@ -47,7 +47,7 @@ function signOut() {
     window.localStorage.clear()
     console.log('User signed out.');
     location.href ="index.html";
-    alert("AHHHHHHHHHHHHHHHHHHHHH");
+   
   });
 }
 
@@ -59,4 +59,8 @@ document.addEventListener("DOMContentLoaded", function(e){
     gapi.load('auth2', function() {
     gapi.auth2.init();
   });
+
+  // Toma el usuario ingresado y lo muestra en la barra nav
+  var usuario = localStorage.getItem("user");
+    document.getElementById("ingreso").innerHTML =  usuario  + ' <i class= "fa fa-caret-down"></i> ';
 });

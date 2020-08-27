@@ -141,5 +141,9 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
         showProductsList();
     });
+
+    // Toma el usuario ingresado y lo muestra en la barra nav
+    var usuario = localStorage.getItem("user");
+    document.getElementById("ingreso").innerHTML =  usuario  + ' <i class= "fa fa-caret-down"></i> ';
 });
 

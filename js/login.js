@@ -20,6 +20,7 @@ function is() {
 
 //función onClick del login p/ redirección
 function onLogin() {
+    localStorage.setItem("user", userName.value); //Define al valor ingresado en el input de usuario como 'user'
     window.location.href="cover.html";
             }; 
 
