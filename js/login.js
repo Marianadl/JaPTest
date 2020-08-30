@@ -32,7 +32,10 @@ function onRegister() {
 // sing in google
 function onSignIn(googleUser) {
     // Useful data for your client-side scripts:
+    var profile = googleUser.getBasicProfile();
+    localStorage.setItem("user", profile.getName());//Define al valor ingresado en el input de usuario como 'user'
     window.location.href="cover.html";
+    
   }
 
 

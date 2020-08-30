@@ -7,6 +7,7 @@ var productsArray = [];
 var currentSortCriteria = undefined;
 var minCost = undefined;
 var maxCost = undefined;
+var buscados = undefined; // Va a contener los prod de la busqueda.
 
 function sortProducts(criteria, array){ 
     let result = [];
@@ -45,8 +46,11 @@ function showProductsList() {
     let htmlContentToAppend = "";
     for (let i = 0; i < productsArray.length; i++) {
         let product = productsArray[i];
-
-        if (((minCost == undefined) || (minCost != undefined && parseInt(product.cost) >= minCost)) &&
+        
+        
+        if (((buscados == undefined) || (product.name.toUpperCase().indexOf(buscados) !== -1) || (product.description.toUpperCase().indexOf(buscados) !== -1)) //Se agrega condición para buscador
+        &&
+        ((minCost == undefined) || (minCost != undefined && parseInt(product.cost) >= minCost)) &&
             ((maxCost == undefined) || (maxCost != undefined && parseInt(product.cost) <= maxCost))){
 
         htmlContentToAppend +=
@@ -85,6 +89,11 @@ function showProductsList() {
             //Muestro las categorías ordenadas
             showProductsList();
         }
+
+    function buscar() { //Función buscar para keyup en input type search, muestra lista de productos que coincidan con la busqueda
+        buscados = document.getElementById("buscador").value.toUpperCase();
+        showProductsList();
+    }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
